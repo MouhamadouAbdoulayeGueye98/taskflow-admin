@@ -17,9 +17,19 @@ import {
 } from "lucide-react";
 import "./App.css";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API = (
+  import.meta.env.VITE_API_URL ||
+  "https://examen-nodejs-octobre-2026-1.onrender.com"
+).replace(/\/+$/, "");
 
-const api = axios.create({ baseURL: API });
+const api = axios.create({
+  baseURL: API,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+
 
 function App() {
   const [token, setToken] = useState(
